@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Patient - {{ patient.name }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <img src="/static/logo.png" alt="Application Logo" class="logo">
+        <h1>NurseAssist Pro</h1>
+    </header>
+    <main>
+        <h2>Edit Patient Information</h2>
+        <form method="POST">
+            <label for="file_no">File Number:</label>
+            <input type="text" id="file_no" name="file_no" value="{{ patient.file_no }}">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ patient.name }}">
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" value="{{ patient.age }}">
+
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex">
+                <option value="M" {% if patient.sex == "M" %}selected{% endif %}>Male</option>
+                <option value="F" {% if patient.sex == "F" %}selected{% endif %}>Female</option>
+            </select>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" value="{{ patient.dob }}">
+
+            <button type="submit">Save Changes</button>
+        </form>
+        <a href="{{ url_for('home') }}">
+            <button>Cancel</button>
+        </a>
+    </main>
+</body>
+</html>

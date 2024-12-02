@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Scheduler</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <img src="/static/logo.png" alt="Application Logo" class="logo">
+        <h1>Task Scheduler for {{ patient.name }}</h1>
+    </header>
+    <section>
+        <h2>Current Tasks</h2>
+        <ul>
+            {% for task in tasks %}
+            <li>{{ task }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Add New Task</h2>
+        <form method="POST">
+            <label for="task">Task:</label>
+            <input type="text" id="task" name="task" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <a href="/">Back to Home</a>
+    </section>
+</body>
+</html>

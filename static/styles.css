@@ -1,0 +1,102 @@
+/* General Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    align-items: center;
+    background-color: #004085;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Styling */
+.logo {
+    float: left;
+    height: 200px; /* Double the height */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Space between logo and text */
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #004085;
+    color: white;
+}
+
+/* Form Styling */
+form {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input, form select, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+/* Button Styling */
+button {
+    background-color: #004085;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #002752;
+}
+
+/* Highlight Critical Values */
+.critical {
+    color: red;
+    font-weight: bold;
+}
+
+/* Links */
+a {
+    color: #004085;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - {{ patient.name }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <img src="/static/logo.png" alt="Application Logo" class="logo">
+        <h1>NurseAssist Pro</h1>
+    </header>
+    <main>
+        <h2>Dashboard for {{ patient.name }}</h2>
+        <p><strong>File Number:</strong> {{ patient.file_no }}</p>
+        <p><strong>Age:</strong> {{ patient.age }}</p>
+        <p><strong>Sex:</strong> {{ patient.sex }}</p>
+        <p><strong>Date of Birth:</strong> {{ patient.dob }}</p>
+
+        <h3>Observations</h3>
+        <form method="POST">
+            <label for="HR" class="{% if critical_flags.HR %}critical{% endif %}">
+                Heart Rate (HR):
+            </label>
+            <input type="text" id="HR" name="HR" value="{{ patient.observations.HR }}">
+
+            <label for="BP" class="{% if critical_flags.BP_systolic or critical_flags.BP_diastolic %}critical{% endif %}">
+                Blood Pressure (BP):
+            </label>
+            <input type="text" id="BP" name="BP" value="{{ patient.observations.BP }}">
+
+            <label for="O2" class="{% if critical_flags.O2 %}critical{% endif %}">
+                Oxygen Level (O2):
+            </label>
+            <input type="text" id="O2" name="O2" value="{{ patient.observations.O2 }}">
+
+            <label for="Temp" class="{% if critical_flags.Temp %}critical{% endif %}">
+                Temperature (Temp):
+            </label>
+            <input type="text" id="Temp" name="Temp" value="{{ patient.observations.Temp }}">
+
+            <label for="CO2" class="{% if critical_flags.CO2 %}critical{% endif %}">
+                CO2 Saturation:
+            </label>
+            <input type="text" id="CO2" name="CO2" value="{{ patient.observations.CO2 }}">
+
+            <label for="Sx">Symptoms (Sx):</label>
+            <input type="text" id="Sx" name="Sx" value="{{ patient.observations.Sx }}">
+
+            <label for="Dx">Diagnosis (Dx):</label>
+            <input type="text" id="Dx" name="Dx" value="{{ patient.observations.Dx }}">
+
+            <label for="Rx">Prescription (Rx):</label>
+            <input type="text" id="Rx" name="Rx" value="{{ patient.observations.Rx }}">
+
+            <button type="submit">Update Observations</button>
+        </form>
+
+        <h3>Task Scheduler</h3>
+        <form method="POST" action="{{ url_for('manage_tasks', patient_id=patient.id) }}">
+            <ul>
+                {% for task in patient.tasks %}
+                <li>
+                    {{ task }}
+                    <button type="submit" name="delete_task" value="{{ loop.index0 }}">Delete</button>
+                </li>
+                {% endfor %}
+            </ul>
+            <label for="new_task">Add Task:</label>
+            <input type="text" id="new_task" name="new_task">
+            <button type="submit" name="add_task">Add</button>
+        </form>
+
+        <a href="{{ url_for('home') }}">
+            <button>Back to Home</button>
+        </a>
+    </main>
+</body>
+</html>
